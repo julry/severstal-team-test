@@ -1,6 +1,8 @@
+import React from "react";
 import styled from "styled-components";
+import {circleProjectTop} from "../../constants/images";
 
-export const TopImg = styled.img`
+ const Img = styled.img`
     position: absolute;
     top:0;
     right:0;
@@ -9,3 +11,7 @@ export const TopImg = styled.img`
         width: 210px
     }
 `
+
+export  const TopImg = (props) => {
+    return <Img {...props} src={circleProjectTop} alt={''}/>
+}

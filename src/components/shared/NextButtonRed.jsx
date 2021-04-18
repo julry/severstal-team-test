@@ -1,14 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import {ArrowRight} from "../svgIcons/ArrowRight";
-
-const Button = styled.button`
-    background-color: #FF0000;
-    padding: 12px 24px;
-    border: none;
-    outline: none;
-    z-index: 10;
-`
+import {ArrowRight} from "./svgIcons/ArrowRight";
+import {Button} from "./Button";
 
 const Arrow = styled(ArrowRight)`
     width: 30px;

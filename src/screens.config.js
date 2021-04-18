@@ -10,7 +10,14 @@ import {
     steveWorks,
     vinBenzin
 } from "./constants/images";
-import ProjectIntro1 from "./components/ProjectsIntro/ProjectIntro1";
+import ProjectIntro1 from "./components/Projects/Project1/ProjectIntro1";
+import ProjectIntro2 from "./components/Projects/Project2/ProjectInro2";
+import ProjectIntro3 from "./components/Projects/Project3/ProjectIntro3";
+import Result1 from "./components/Projects/Project1/Result1";
+import Result2 from "./components/Projects/Project2/Result2";
+import Result3 from "./components/Projects/Project3/Result3";
+import Teammate1_1 from "./components/Projects/Project1/Teammate1";
+
 
 export const ScreenType = {
     Intro: 'intro',
@@ -46,26 +53,62 @@ export const screens = [
         image: [circleProjectTop]
     },
     {
-        name: 'project-2',
+        name: 'teammate-1-1',
+        component: Teammate1_1,
+        type: ScreenType.Teammate,
+        preloadImages: [steveWorks],
+        image: [circleProjectTop]
+    },
+    {
+        name: 'teammate-1-2',
         component: ProjectIntro1,
         type: ScreenType.Project,
         preloadImages: [steveWorks],
         image: [circleProjectTop]
     },
     {
-        name: 'project-3',
+        name: 'teammate-1-3',
         component: ProjectIntro1,
         type: ScreenType.Project,
         preloadImages: [steveWorks],
         image: [circleProjectTop]
     },
-    // {
-    //     name: 'question-2',
-    //     component: Question2,
-    //     type: ScreenType.Question,
-    //     preloadImages: [question3Image1,question3Image2,question3gif],
-    //     image: [question2Image1,question2Image1,question2gif]
-    // },
+    {
+        name: 'teammate-1-4',
+        component: ProjectIntro2,
+        type: ScreenType.Project,
+        preloadImages: [steveWorks],
+        image: [circleProjectTop]
+    },
+    {
+        name: 'project-3',
+        component: ProjectIntro3,
+        type: ScreenType.Project,
+        preloadImages: [steveWorks],
+        image: [circleProjectTop]
+    },
+    {
+        name: 'result-1',
+        component: Result1,
+        type: ScreenType.ProjectFinal,
+        preloadImages: [],
+        image: []
+    },
+    {
+        name: 'result-2',
+        component: Result2,
+        type: ScreenType.ProjectFinal,
+        preloadImages: [],
+        image: []
+    },
+    {
+        name: 'result-3',
+        component: Result3,
+        type: ScreenType.ProjectFinal,
+        preloadImages: [],
+        image: []
+    },
+
     // {
     //     name: 'question-3',
     //     component: Question3,
