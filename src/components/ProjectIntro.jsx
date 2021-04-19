@@ -11,14 +11,20 @@ const ProjectWrapper = styled.div`
 `
 
 const TextWrapper = styled.div`
-    padding: 27px 27px 14px;
+    padding: 3.3251vh 27px 1.7241vh;
     white-space: pre-wrap;
+    @media screen and (min-width: 1100px){
+        white-space: normal;
+        max-width: 78.125vw;
+    }
 `
 
 const Title = styled.h2`
     margin-bottom: 13px;
     text-transform: uppercase;
-
+    @media screen and (min-width: 1100px){
+        margin-bottom: 30px;
+    }
 `
 
 const Hr = styled.hr`
@@ -31,14 +37,24 @@ const BtnWrapper = styled.div`
     justify-content: flex-end;
 `
 const CircleWrapper = styled.div`
-    height: 300px;
-    margin: 30px 0 0 -27px;
+    height: 80vw;
+    max-height: 300px;
+    margin: 3.6945vh 0 0 -3.3325vh;
     overflow: hidden;
 `
 
 const Circle = styled.img`
-    width: 220px;
-    margin-top: -80px;
+    width: 27.0935vh;
+    max-width: 220px;
+    margin-top: -9.8522vh;
+    @media screen and (min-width: 1100px){
+       position: fixed;
+       max-width: none;
+       left: 0;
+       bottom: 0;
+       width: 270px;
+       margin-bottom: -95px;
+    }
 `
 
 const ProjectIntro = (props) => {

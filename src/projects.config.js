@@ -3,7 +3,7 @@ import {
     grishaPotter, illyaVoroshenec,
     ivanNedobriy,
     jackyChanov,
-    jamesGoslingov, leonardoDaVinchin, nicolaiTesla, ninjaTurtles, pavelUmnov, rajaBharatiya, steelMan,
+    jamesGoslingov, leonardoDaVinchin, michaelLomouhov, nicolaiTesla, ninjaTurtles, pavelUmnov, rajaBharatiya, steelMan,
     steveWorks, superWoman,
     vinBenzin
 } from "./constants/images";
@@ -217,7 +217,7 @@ export const projects = [{
                 position: 'Системный аналитик',
                 description: 'Услышав о Воронежском офисе «Северсталь», пешком за три месяца дошёл из Москвы до Воронежа. За десять лет работы в компании довёл до автоматизма процесс создания Технических Заданий. Подробно изучив все особенности и тонкости своей работы и ИТ в целом, открыл корпоративный институт для сотрудников компании.',
                 isCorrect: true,
-                image: leonardoDaVinchin,
+                image: michaelLomouhov,
             },
             {
                 id: '6',
@@ -253,8 +253,8 @@ export const projects = [{
             },
             {
                 id: '10',
-                name: 'UX - дизайнер',
-                position: 'IOS-разработчик',
+                name: 'Павел Умнов',
+                position: 'UX - дизайнер',
                 description:'Ведущий специалист, прекрасно понимающий всю концепцию взаимодействия пользователей с продуктом. Читает множество книг по психологии, разработке и дизайну. Однажды, из-за своей большой любви к спорту, унёс из офиса шведскую стенку, после чего коллеги запустили хэштэг #УМНОВВЕРНИСТЕНУ.',
                 isCorrect: true,
                 image: pavelUmnov

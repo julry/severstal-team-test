@@ -4,6 +4,7 @@ const circleBgTop = process.env.PUBLIC_URL + '/static/images/circle_bg_top.png';
 const circleProjectBtm = process.env.PUBLIC_URL + '/static/images/circle_project_btm.png';
 const circleProjectTop = process.env.PUBLIC_URL + '/static/images/circle_project_top.png';
 const circleResult = process.env.PUBLIC_URL + '/static/images/circle_result.png';
+const circleTopDesktop = process.env.PUBLIC_URL + '/static/images/circle_top_desktop.png';
 const dmitriiFilin = process.env.PUBLIC_URL + '/static/images/dmitriiFilin.png';
 const eva = process.env.PUBLIC_URL + '/static/images/eva.png';
 const grishaPotter = process.env.PUBLIC_URL + '/static/images/grishaPotter.png';
@@ -32,6 +33,7 @@ export {
     circleProjectBtm,
     circleProjectTop,
     circleResult,
+    circleTopDesktop,
     dmitriiFilin,
     eva,
     grishaPotter,

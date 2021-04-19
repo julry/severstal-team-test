@@ -1,8 +1,21 @@
+import React, {useState} from "react";
+import styled from 'styled-components';
 import {getProjectById} from "../../../utils/getProjectById";
 import ProjectIntro from "../../ProjectIntro";
 import {Text} from "../../shared/Text";
 import {StyledList} from "../../shared/StyledList";
-import React, {useState} from "react";
+import {TopImg} from "../../shared/TopImg";
+import {circleProjectTop} from "../../../constants/images";
+
+const Img = styled(TopImg)`
+  @media screen and (max-width: 1099px){
+       display: none;
+    }
+`
+
+const List = styled(StyledList)`
+    margin: 40px 0;
+`
 
 const ProjectIntro2 = () => {
     const [step, setStep] = useState(1);
@@ -17,10 +30,15 @@ const ProjectIntro2 = () => {
                 </Text>
             case 2:
                 return <>
-                    <StyledList list={project.list}/>
                     <Text>
-                        Коллеги смогут разбираться самостоятельно.
-                        Но для того, чтобы все это заработало, нужно создать саму платформу.  Кого бы ты точно взял себе в команду для этого проекта?
+                        Но нет предела совершенству! В программу регулярно вносятся доработки,
+                        поэтому вторая твоя задача – апгрейднуть приложение и добавить туда
+                        пару новых функций:
+                    </Text>
+                    <List list={project.list}/>
+                    <Text>
+                        Итак, попытка #2. Тебе нужно собрать команду разработчиков мобильных приложений.
+                        Без кого не обойтись на этот раз?
                     </Text>
                 </>
             default:
@@ -28,6 +46,7 @@ const ProjectIntro2 = () => {
         }
     }
     return <ProjectIntro project={project} step={step} setStep={setStep}>
+        <Img src={circleProjectTop} alt={''} />
         {getContent()}
     </ProjectIntro>
 }
