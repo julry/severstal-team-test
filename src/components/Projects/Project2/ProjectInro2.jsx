@@ -8,7 +8,7 @@ import {TopImg} from "../../shared/TopImg";
 import {circleProjectTop} from "../../../constants/images";
 
 const Img = styled(TopImg)`
-  @media screen and (max-width: 1099px){
+  @media screen and (max-width: 640px){
        display: none;
     }
 `

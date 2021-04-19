@@ -4,6 +4,7 @@ import {getProjectById} from "../../../utils/getProjectById";
 import {Text} from "../../shared/Text";
 import ProjectIntro from "../../ProjectIntro";
 import {TopImg} from "../../shared/TopImg";
+import {circleProjectTop} from "../../../constants/images";
 
 const CircleWrapper = styled.div`
     overflow: hidden;
@@ -11,6 +12,14 @@ const CircleWrapper = styled.div`
     position: absolute;
     top: 0;
     right: 0;
+    @media screen and (min-width: 640px){
+      display: none;
+    }
+`
+const Img = styled(TopImg)`
+  @media screen and (max-width: 640px){
+       display: none;
+    }
 `
 
 const StyledCircle = styled(TopImg)`
@@ -24,10 +33,12 @@ const ProjectIntro3 = () => {
     const getContent = () => {
         switch (step) {
             case 1:
-                return <Text>
+                return <>
+                    <Text>
                     {"... все время придумывают крутые штуки и решения, чтобы упростить жизнь себе и другим. Иногда масштабы этих идей просто поражают воображение! Представь, если бы несколько лет назад тебе сказали, что в два часа ночи кому-то неожиданно понадобится купить тонну стали, ты бы сильно удивился и решил, что это возможно только во сне. Но сейчас ты знаешь, что для тех, кому не спится по ночам, такая опция вполне себе доступна.\n\nВ компании есть свой собственный интернет-магазин — нет-нет, не по продаже корпоративного мерча, а по продаже стали!"
                     }
                   </Text>
+                </>
             case 2:
                 return <>
                     <CircleWrapper>
@@ -43,6 +54,7 @@ const ProjectIntro3 = () => {
         }
     }
     return <ProjectIntro project={project} step={step} setStep={setStep} isTopImg={true}>
+        <Img src={circleProjectTop} alt={''} />
         {getContent()}
     </ProjectIntro>
 }

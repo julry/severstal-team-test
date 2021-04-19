@@ -13,7 +13,7 @@ const ProjectWrapper = styled.div`
 const TextWrapper = styled.div`
     padding: 3.3251vh 27px 1.7241vh;
     white-space: pre-wrap;
-    @media screen and (min-width: 1100px){
+    @media screen and (min-width: 640px){
         white-space: normal;
         max-width: 78.125vw;
     }
@@ -47,7 +47,7 @@ const Circle = styled.img`
     width: 27.0935vh;
     max-width: 220px;
     margin-top: -9.8522vh;
-    @media screen and (min-width: 1100px){
+    @media screen and (min-width: 640px){
        position: fixed;
        max-width: none;
        left: 0;

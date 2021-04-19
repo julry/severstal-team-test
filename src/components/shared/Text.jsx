@@ -16,6 +16,12 @@ export const Text = styled.p`
         line-height: 18px;
     } 
     
+    @media all and (min-width: 640px) {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    
+    
     @media screen and (min-width: 1100px){
         font-size: 24px;
         line-height: 30px;

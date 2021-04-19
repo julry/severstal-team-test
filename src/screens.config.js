@@ -17,7 +17,7 @@ import Result1 from "./components/Projects/Project1/Result1";
 import Result2 from "./components/Projects/Project2/Result2";
 import Result3 from "./components/Projects/Project3/Result3";
 import Teammate1_1 from "./components/Projects/Project1/Teammate1";
-import Teammate1_2 from "./components/Projects/Project1/Teammate2";
+import Teammate1_2 from "./components/Projects/Project2/Teammate1";
 import Teammate1_3 from "./components/Projects/Project3/Teammate1";
 import Teammate4_1 from "./components/Projects/Project1/Teammate4";
 import Teammate3_1 from "./components/Projects/Project1/Teammate3";

@@ -224,7 +224,7 @@ export const projects = [{
                 name: 'Илья Воронежец',
                 position: 'PHP - разработчик',
                 description: 'Богатырь компьютерного дела. Направо пойдёт - бэкэнд соберёт, налево пойдёт - все баги найдёт, прямо пойдёт - сервак развернёт .',
-                isCorrect: false,
+                isCorrect: true,
                 image: illyaVoroshenec
             },
             {

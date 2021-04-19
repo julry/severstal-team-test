@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {screens, ScreenType} from "../screens.config";
 import {preloadImage} from "../utils/preloadImage";
 import { ProgressProvider } from '../context/ProgressContext';
+import {projects} from "../projects.config";
+import {getTeammate} from "../utils/getTeammate";
 
 
 export function ScreenWrapper() {
@@ -33,11 +35,42 @@ export function ScreenWrapper() {
 
     ///ПРОДУМАТЬ КАК СЧИТАТЬ ОТВЕТЫ
 
-    const setAnswer = (projectId, isCorrect) => {
-        // const projectAnswers = [...answers[projectId], isCorrect];
-        // setAnswers(answers => ({...answers, [projectId]: projectAnswers }));
+    const setAnswer = (projectId, teammateId, action) => {
+        let projectTeammates = answers[projectId] ? [...answers[projectId]] : [];
+        if (action==='choose'){
+            if (projectTeammates.includes(teammateId)) return;
+            projectTeammates.push(teammateId);
+        } else if (action==='refuse'){
+            if (!projectTeammates.includes(teammateId)) return;
+            const id = projectTeammates.indexOf(teammateId);
+            projectTeammates.splice(id === 0 ? 0 : id - 1,1);
+        }
+        console.log(projectTeammates);
+        setAnswers(answers=> ({...answers, [projectId]: projectTeammates}));
+
     };
 
+
+    const countPoints = (projectId) => {
+        let result = 0;
+        if (answers[projectId].length > 0) {
+            const correctCount = projects
+                .find(project=>project.id===projectId).team
+                .filter(teammate=> teammate.isCorrect).length;
+            const pointPerCorrect = Math.floor(100 / correctCount);
+            answers[projectId].map(mateId=> {
+                if (getTeammate(mateId, projectId).isCorrect) {
+                    result += pointPerCorrect;
+                }
+                else {
+                    result -= 10;
+                }
+            })
+        }
+
+         result = result < 0 ? 0 : result===99 ? 100 : result;
+        setFinalPoints(points => ({...points, [projectId]: result}));
+    }
 
     const { component, preloadImages, ...screen } = screens[currentScreenIndex] || {};
     const Component = component || (() => null);
@@ -50,10 +83,12 @@ export function ScreenWrapper() {
     const progressProviderValue = {
         screen,
         answers,
+        finalPoints,
         screenDelta,
         setAnswer,
         setNext,
         setPrev,
+        countPoints,
     };
 
     return (

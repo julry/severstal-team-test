@@ -12,7 +12,6 @@ const Wrapper = styled.div`
     white-space: pre-wrap;
     @media all and (min-width: 1100px){
         white-space: normal;
-        
     }
 `
 
@@ -22,29 +21,42 @@ const Title = styled.p`
     line-height: 22px;
     text-transform: uppercase;
     margin: 2.3vh 62px 0;
+    @media all and (min-width: 640px){
+        font-size: 36px;
+        line-height: 45px;
+    }
     @media all and (min-width: 1100px){
         grid-row: 1/2;
         grid-column: 1/3;
         white-space: normal;
-        font-size: 36px;
-        margin-top: 85px;
+        margin-top: 70px;
         line-height: 22px;
     }
+    
 `
 
 const InfoWrapper = styled.div`
-    max-width: 1125px;
     @media all and (min-width: 1100px){
+        max-width: 1125px;
         white-space: normal;
         display: grid;
-        grid-template-rows: 160px 56.5555vh auto;
+        grid-template-rows: 145px 56.5555vh auto;
         grid-template-columns: 465px auto;
     }
+    
 `
 
 const ImgWrapper = styled.div`
     padding: 6.6vh 20vw 3.07vh 17vw;
     position: relative;
+    overflow: hidden;
+    @media all and (min-width: 640px){
+        padding: 2.6vh 43.6vw 3.07vh 10.2vw;
+    }
+    @media all and (min-height: 640px) and (orientation: landscape){
+       padding: 2.6vh 57.6vw 3.07vh 10.2vw;
+    }
+    
      @media all and (min-width: 1100px){
         padding: 0 0 0 80px;
         height: fit-content;
@@ -65,21 +77,42 @@ const NextWrapper = styled.div`
     }
 `
 
+const PointsWrapper = styled.div`
+    position: absolute;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+    padding: 6.6vh 37vw 3.07vh 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    @media all and (min-width: 640px){
+        padding: 2.6vh 53.6vw 3.07vh 0;
+    }
+    @media all and (min-height: 640px) and (orientation: landscape){
+       padding: 2.6vh 67.6vw 3.07vh 0;
+    }
+    @media all and (min-width: 1100px){
+        padding: 0 80px 0 0;
+    }
+`
+
 const Points = styled.p`
     font-weight: 600;
     font-size: 24px;
-    position: absolute;
     line-height: 29px;
     text-align: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     text-transform: uppercase;
+    margin-top: -25px;
+    
+    @media all and (min-width: 640px){
+        font-size: 36px;
+    }
     
     @media all and (min-width: 1100px){
         font-size: 36px;
         line-height: 29px;
-        transform: translate(0,-90%);
     }
 `
 
@@ -91,6 +124,9 @@ const MobileButton = styled.div`
 
 const TextWrapper = styled.div`
     padding: 0 27px;
+    @media all and (min-width: 640px){
+        max-width: 670px;
+    }
      @media all and (min-width: 1100px){
         padding: 95px 0 0 90px;
         grid-row: 2/3;
@@ -101,9 +137,13 @@ const TextWrapper = styled.div`
 const Text = styled.p`
     font-size: 13px;
     line-height: 22px;
+    width: fit-content;
+    @media all and (min-width: 640px){
+        font-size: 20px;
+        line-height: 30px;
+    }
     @media all and (min-width: 1100px){
         font-size: 24px;
-        line-height: 30px;
     }
 `
 
@@ -130,6 +170,8 @@ const BtnWrapper = styled.div`
     justify-content: flex-end;
 `
 
+
+
 const InviteText = styled(Text)`
     font-size: 17px;
     margin-top: 5px;
@@ -141,8 +183,8 @@ const InviteText = styled(Text)`
 
 const Result = (props) => {
     const {project} = props;
-    const points = 100;
-    const { setNext } = useContext(ProgressContext);
+    const { setNext, finalPoints } = useContext(ProgressContext);
+    const points = finalPoints[project.id];
 
     const {text, title} = points === 100 ? project.result.success : project.result.fail;
     return <Wrapper>
@@ -152,7 +194,9 @@ const Result = (props) => {
             <Title>{"Эффективность\nСОЗДАННОЙ команды"}</Title>
             <ImgWrapper>
                 <Img src={circleResult} alt={''} />
-                <Points>{points}%</Points>
+                <PointsWrapper>
+                    <Points>{points}%</Points>
+                </PointsWrapper>
             </ImgWrapper>
             <TextWrapper>
                 <TitleResult>

@@ -61,9 +61,9 @@ const TextTitle = styled.p`
     padding: 13px 20px;
     font-size: 18px;
     font-weight: 600;
-    
+    max-width: 887px;
+
     @media screen and (min-width: 1100px){
-        max-width: 887px;
         font-size: 24px;
     }
 `
@@ -75,8 +75,9 @@ const TextWrapper = styled.div`
     font-size: 13px;
     line-height: 22px;    
     white-space: pre-wrap;
+            max-width: 887px;
+
     @media screen and (min-width: 1100px){
-        max-width: 887px;
         font-size: 24px;
         line-height: 30px;
     }
@@ -87,9 +88,8 @@ const BtnWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
     z-index: 3;
-    @media screen and (min-width: 1100px){
-        max-width: 887px;
-    }
+    max-width: 887px;
+
 `
 
 const BtnImgWrapper = styled.div`

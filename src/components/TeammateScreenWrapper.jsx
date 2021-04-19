@@ -24,7 +24,13 @@ const Wrapper = styled.div`
        grid-template-rows: 9vh 21.5vh 14em auto;
     }
     
+    @media all and (min-width: 640px) {
+        padding: 30px 50px 0;
+        grid-template-rows: 9vh 33.15vh 24.5em auto;
+    }
+    
     @media screen and (min-width: 1100px){
+       max-width: none;
        padding: 85px 61px 0;
        white-space: normal;
        grid-template-rows: 140px 400px auto;
@@ -42,18 +48,26 @@ const Title = styled.h3`
     @media all and (max-height: 750px){
        font-size: 18px;
     }
-    @media screen and (min-width: 1100px){
-       font-size: 36px;
-        line-height: 29px;
+    @media screen and (min-width: 640px){
+       font-size: 34px;
+       line-height: 45px;
     }
 `
 
 const TextWrapper = styled.div`
     grid-row: 3 / 4;
+    max-width: 560px;
+    
+    @media all and (min-height: 640px) and (orientation: landscape){
+          grid-row: 2/3;
+          padding-top: 100px;
+    }
+    
     @media screen and (min-width: 1100px){
         grid-column: 1/2;
         grid-row: 2 / 3;
     }
+    
 `
 
 const ImgWrapper = styled.div`
@@ -64,6 +78,11 @@ const ImgWrapper = styled.div`
       max-width: 100%;
     }
     
+    @media all and (min-height: 640px) and (orientation: landscape){
+          grid-column: 2/3;
+          padding-left: 30px;
+    }
+    
     @media all and (min-width: 1100px){
         max-width: 404px;
         height: 396px;
@@ -72,6 +91,7 @@ const ImgWrapper = styled.div`
         margin-left: 60px;
         margin-top: -55px;
     }
+    
    
 `
 const Position = styled.p`
@@ -79,11 +99,13 @@ const Position = styled.p`
     line-height: 22px;
     text-transform: uppercase;
     margin-bottom: 7px;
+    width: max-content;
+    
     @media all and (max-height: 750px){
        font-size: 15px;
     }
-     @media all and (min-width: 1100px){
-        font-size: 36px;
+     @media all and (min-width: 640px){
+        font-size: 32px;
         line-height: 45px;
         margin-bottom: 30px;
     }
@@ -96,7 +118,7 @@ const Name = styled(Position)`
 
 const Img = styled(TopImg)`
     width: 310px;
-    @media all and (max-width: 1099px){
+    @media all and (max-width: 639px){
         display: none;
     }
 `
@@ -105,7 +127,20 @@ const BtnWrapper = styled.div`
     display: flex;
     grid-row: 4/5;
     justify-content: center;
+    @media all and (min-width: 640px){
+       justify-content: left;
+       margin-left: -20px;
+    }
+    @media all and (min-height: 640px) and (orientation: landscape){
+        grid-row: 3/4;
+        grid-column: 2/3;
+        max-height: 70px;
+        padding-left: 30px;
+    }
+
     @media all and (min-width: 1100px){
+        margin: 0;
+        justify-content: center;
         grid-row: 3/4;
         grid-column: 2/3;
     }
@@ -140,7 +175,17 @@ const FinishBtn = styled.button`
     margin-top: 10px;
     grid-row: 5/6;
 
-    
+    @media all and (min-width: 640px){
+        max-width: 280px;
+    }
+    @media all and (min-height: 640px) and (orientation: landscape){
+        grid-row: 3/4;
+        grid-column: 2/3;
+        max-height: 70px;
+        margin-left: 30px;
+        margin-top: 90px;
+        max-width: 270px;
+    }
     @media all and (min-width: 1100px){
         max-width: 350px;
         grid-column: 1/2;
@@ -153,9 +198,22 @@ const FinishBtn = styled.button`
 `
 
 const TeammateScreenWrapper = (props) => {
-    const { teammate, isLast } = props;
+    const { projectId, teammate, isLast } = props;
 
-    const { setNext } = useContext(ProgressContext);
+    const { setNext, setAnswer, setPrev, countPoints } = useContext(ProgressContext);
+
+    const onRefuse = () => {
+        setAnswer(projectId, teammate.id, 'refuse');
+    }
+
+    const onChoose = () => {
+        setAnswer(projectId, teammate.id, 'choose');
+    }
+
+    const onFinish = () => {
+        countPoints(projectId);
+        setNext();
+    }
 
     return <Wrapper>
         <Img/>
@@ -173,16 +231,16 @@ const TeammateScreenWrapper = (props) => {
             </Text>
         </TextWrapper>
         <BtnWrapper>
-            <Button>
+            <Button onClick={setPrev}>
                 <ArrowLeft />
             </Button>
-            <Refuse />
-            <ChooseBtn />
+            <Refuse onClick={onRefuse}/>
+            <ChooseBtn onClick={onChoose}/>
             <Button onClick={setNext}>
                 <ArrowRight />
             </Button>
         </BtnWrapper>
-        {isLast&&<FinishBtn>Сформировать команду</FinishBtn>}
+        {isLast&&<FinishBtn onClick={onFinish}>Сформировать команду</FinishBtn>}
 
     </Wrapper>
 }
