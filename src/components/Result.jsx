@@ -40,7 +40,7 @@ const InfoWrapper = styled.div`
         max-width: 1125px;
         white-space: normal;
         display: grid;
-        grid-template-rows: 145px 56.5555vh auto;
+        grid-template-rows: 145px auto;
         grid-template-columns: 465px auto;
     }
     
@@ -73,7 +73,7 @@ const NextWrapper = styled.div`
     display: none;
     @media all and (min-width: 1100px){
        display: block;
-       grid-column: 1/3;
+       max-width: 1125px;
     }
 `
 
@@ -218,17 +218,17 @@ const Result = (props) => {
                 </MobileButton>
 
             </TextWrapper>
-            <NextWrapper>
-                <Hr/>
-                <BtnWrapper>
-                    { +project.id===projects.length ?<InviteWrapper>
-                                <NextButtonInvite onClick={setNext}/>
-                                <InviteText>в «Северсталь-инфоком»!</InviteText>
-                            </InviteWrapper>
-                        : <NextButtonRed onClick={setNext}/>}
-                </BtnWrapper>
-            </NextWrapper>
         </InfoWrapper>
+        <NextWrapper>
+            <Hr/>
+            <BtnWrapper>
+                { +project.id===projects.length ?<InviteWrapper>
+                        <NextButtonInvite onClick={setNext}/>
+                        <InviteText>в «Северсталь-инфоком»!</InviteText>
+                    </InviteWrapper>
+                    : <NextButtonRed onClick={setNext}/>}
+            </BtnWrapper>
+        </NextWrapper>
 
     </Wrapper>
 }
