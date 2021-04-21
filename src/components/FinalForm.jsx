@@ -260,8 +260,8 @@ const FinalForm = () => {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [otherProgram, setOtherProgram] = useState('');
-    const [thanksScreen, setThanksScreen] = useState(true);
-    const [error, setError] = useState(true);
+    const [thanksScreen, setThanksScreen] = useState(false);
+    const [error, setError] = useState(false);
 
     const onYearChange = (value)=> {
        if (!Number.isInteger(+value)) return;
