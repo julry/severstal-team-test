@@ -145,7 +145,7 @@ const BtnWrapper = styled.div`
 
     @media all and (min-width: 1100px){
         margin: 0;
-        padding: 0;
+        padding-left: 70px;
         max-height: none;
         justify-content: center;
         grid-row: 3/4;
@@ -202,7 +202,7 @@ const FinishBtn = styled.button`
         grid-row: 3/4;
         font-size: 24px;
         line-height: 20px;
-        max-height: 71px;
+        height: 90px;
     }
 `
 
@@ -219,12 +219,14 @@ const TeammateScreenWrapper = (props) => {
         setAnswer(projectId, teammate.id, 'refuse');
         setIsPressedRefuse(true);
         setIsPressedChoose(false);
+        if (!isLast)  setNext();
     }
 
     const onChoose = () => {
         setAnswer(projectId, teammate.id, 'choose');
         setIsPressedRefuse(false);
         setIsPressedChoose(true);
+        if (!isLast)  setNext();
     }
 
     const onFinish = () => {
