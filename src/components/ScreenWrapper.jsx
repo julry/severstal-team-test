@@ -68,6 +68,7 @@ export function ScreenWrapper() {
                 else {
                     result -= 10;
                 }
+                return result;
             })
             result = result <= 0 ? 0 : result===99 ? 100 : result;
         }
