@@ -123,13 +123,15 @@ const MobileButton = styled.div`
 `
 
 const TextWrapper = styled.div`
-    padding: 0 27px;
+    padding: 0 27px;        
+    white-space: pre-wrap;
+
     @media all and (min-width: 640px){
         max-width: 670px;
     }
     
      @media all and (min-width: 1100px){
-        padding: 95px 0 0 90px;
+        padding: 55px 0 0 90px;
         grid-row: 2/3;
         grid-column: 2/3;
     }
