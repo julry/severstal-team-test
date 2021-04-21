@@ -16,11 +16,12 @@ const Wrapper = styled.div`
     white-space: pre-wrap;
     overflow: hidden;
     
+    
     @media all and (max-height: 750px){
        grid-template-rows: 9vh 24.5vh 15.5em auto;
     }
     @media all and (max-height: 570px){
-       grid-template-rows: 9vh 21.5vh 14em auto;
+       grid-template-rows: 10.3vh 21.5vh 14em auto;
     }
     
     @media all and (min-width: 640px) {
@@ -204,10 +205,7 @@ const FinishBtn = styled.button`
         max-height: 71px;
     }
 `
-const Dummy = styled.div`
-          width: 46px;
-          height: 40px;
-`
+
 
 const TeammateScreenWrapper = (props) => {
     const { projectId, teammate, isLast } = props;
