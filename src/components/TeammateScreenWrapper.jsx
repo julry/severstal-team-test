@@ -202,7 +202,7 @@ const FinishBtn = styled.button`
         grid-row: 3/4;
         font-size: 24px;
         line-height: 20px;
-        height: 90px;
+        min-height: 90px;
     }
 `
 
