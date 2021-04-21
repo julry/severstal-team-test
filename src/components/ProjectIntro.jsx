@@ -67,15 +67,22 @@ const ProjectIntro = (props) => {
         window.scroll(0, 0);
     },[]);
 
-    return <ProjectWrapper onClick={setNextStep}>
+    return <ProjectWrapper>
         <Header id={project.id} />
         <TextWrapper>
             <Title>{project.title}</Title>
             {props.children}
             {step < project.stepCounts ?
-                <CircleWrapper>
-                    <Circle src={circleProjectBtm}  alt={''}/>
-                </CircleWrapper>
+                <>
+                <Hr/>
+                <BtnWrapper>
+                    <NextButtonRed onClick={setNextStep} />
+                </BtnWrapper>
+                    <CircleWrapper>
+                        <Circle src={circleProjectBtm}  alt={''}/>
+                    </CircleWrapper>
+
+                </>
                 :<>
                     <Hr/>
                     <BtnWrapper>
