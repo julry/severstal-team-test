@@ -2,8 +2,7 @@ import React, {useContext, useEffect} from "react";
 import styled from "styled-components";
 import {NextButtonRed} from "./shared/NextButtonRed";
 import {ProgressContext} from "../context/ProgressContext";
-import {TopImg} from "./shared/TopImg";
-import {circleProjectBtm, circleProjectTop} from "../constants/images";
+import {circleProjectBtm} from "../constants/images";
 import {Header} from "./shared/Header";
 
 const ProjectWrapper = styled.div`

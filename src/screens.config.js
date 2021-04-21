@@ -39,6 +39,7 @@ import Teammate7_3 from "./components/Projects/Project3/Teammate7";
 import Teammate8_3 from "./components/Projects/Project3/Teammate8";
 import Teammate9_3 from "./components/Projects/Project3/Teammate9";
 import Teammate10_3 from "./components/Projects/Project3/Teammate10";
+import FinalForm from "./components/FinalForm";
 
 
 export const ScreenType = {
@@ -46,6 +47,8 @@ export const ScreenType = {
     Project: 'question',
     Teammate: 'teammate',
     ProjectFinal: 'final',
+    Form: 'form',
+    Final: 'final'
 };
 
 export const screens = [
@@ -270,9 +273,10 @@ export const screens = [
         preloadImages: [],
         image: [circleResult]
     },
-    // {
-    //     name: 'final',
-    //     component: Final,
-    //     type: ScreenType.Final,
-    // },
+    {
+        name: 'form',
+        component: FinalForm,
+        type: ScreenType.Form,
+    },
+
 ];

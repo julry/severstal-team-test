@@ -8,5 +8,5 @@ export const Button = styled.button`
     z-index: 10;
     color: white;
     font-size: 18px;
-    
+    cursor: pointer;
 `

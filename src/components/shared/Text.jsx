@@ -21,6 +21,9 @@ export const Text = styled.p`
         line-height: 30px;
     }
     
+    @media all and (min-height: 640px) and (orientation: landscape){
+          font-size: 18px;
+    }
     
     @media screen and (min-width: 1100px){
         font-size: 24px;

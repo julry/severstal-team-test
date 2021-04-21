@@ -6,6 +6,7 @@ import {Button} from "./Button";
 const Arrow = styled(ArrowRight)`
     width: 30px;
     height: 26px;
+
 `
 export const NextButtonRed = (props) => {
     return <Button {...props}>

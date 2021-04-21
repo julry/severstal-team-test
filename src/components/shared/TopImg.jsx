@@ -11,6 +11,10 @@ import {circleProjectTop, circleTopDesktop} from "../../constants/images";
     @media screen and (max-width: 340px){
         width: 61vw;
     }
+    @media screen and (min-width: 640px){
+        max-width: 235px;
+    }
+    
     @media screen and (min-width: 1100px){
         max-width: none;
         width: 220px;

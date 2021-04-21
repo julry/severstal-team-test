@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {screens, ScreenType} from "../screens.config";
+import {screens} from "../screens.config";
 import {preloadImage} from "../utils/preloadImage";
 import { ProgressProvider } from '../context/ProgressContext';
 import {projects} from "../projects.config";
 import {getTeammate} from "../utils/getTeammate";
-
 
 export function ScreenWrapper() {
     /////////////////// for development ////////////////////////////////////
@@ -16,6 +15,7 @@ export function ScreenWrapper() {
     const [screenDelta, setScreenDelta] = useState(0);
     const [answers, setAnswers] = useState([]);
     const [finalPoints, setFinalPoints] = useState({});
+    const [refused, setRefused] = useState({});
 
     const setPrev = () => {
         const canSet = currentScreenIndex > 0;
@@ -33,27 +33,29 @@ export function ScreenWrapper() {
         }
     };
 
-    ///ПРОДУМАТЬ КАК СЧИТАТЬ ОТВЕТЫ
-
     const setAnswer = (projectId, teammateId, action) => {
         let projectTeammates = answers[projectId] ? [...answers[projectId]] : [];
+        let refusedTeammates = refused[projectId] ? [...refused[projectId]] : [];
         if (action==='choose'){
-            if (projectTeammates.includes(teammateId)) return;
-            projectTeammates.push(teammateId);
-        } else if (action==='refuse'){
-            if (!projectTeammates.includes(teammateId)) return;
-            const id = projectTeammates.indexOf(teammateId);
-            projectTeammates.splice(id === 0 ? 0 : id - 1,1);
-        }
-        console.log(projectTeammates);
-        setAnswers(answers=> ({...answers, [projectId]: projectTeammates}));
+            refusedTeammates = refused[projectId] ? refused[projectId].filter(id=> id!==teammateId) : [];
 
+            if (!projectTeammates.includes(teammateId)) {
+                projectTeammates.push(teammateId);
+            }
+        } else if (action==='refuse'){
+            refusedTeammates.push(teammateId);
+            if (projectTeammates.includes(teammateId)) {
+                projectTeammates = answers[projectId].filter(id=> id!==teammateId);
+            }
+        }
+        setAnswers(answers=> ({...answers, [projectId]: projectTeammates}));
+        setRefused(refused=> ({...refused, [projectId]: refusedTeammates}))
     };
 
 
     const countPoints = (projectId) => {
         let result = 0;
-        if (answers[projectId].length > 0) {
+        if (answers[projectId]&&answers[projectId].length > 0) {
             const correctCount = projects
                 .find(project=>project.id===projectId).team
                 .filter(teammate=> teammate.isCorrect).length;
@@ -61,14 +63,14 @@ export function ScreenWrapper() {
             answers[projectId].map(mateId=> {
                 if (getTeammate(mateId, projectId).isCorrect) {
                     result += pointPerCorrect;
+                    console.log(mateId);
                 }
                 else {
                     result -= 10;
                 }
             })
+            result = result <= 0 ? 0 : result===99 ? 100 : result;
         }
-
-         result = result < 0 ? 0 : result===99 ? 100 : result;
         setFinalPoints(points => ({...points, [projectId]: result}));
     }
 
@@ -84,12 +86,14 @@ export function ScreenWrapper() {
         screen,
         answers,
         finalPoints,
+        refused,
         screenDelta,
         setAnswer,
         setNext,
         setPrev,
         countPoints,
     };
+
 
     return (
         <div>

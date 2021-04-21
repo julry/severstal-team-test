@@ -5,6 +5,9 @@ import {RefuseIcon} from "./svgIcons/RefuseIcon";
 
 const Button = styled(AnswerBtn)`
   background-color: #FF0000;
+   &:hover{
+      background-color: #db0000;
+    }
 `
 
 

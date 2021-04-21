@@ -127,6 +127,7 @@ const TextWrapper = styled.div`
     @media all and (min-width: 640px){
         max-width: 670px;
     }
+    
      @media all and (min-width: 1100px){
         padding: 95px 0 0 90px;
         grid-row: 2/3;
@@ -139,7 +140,7 @@ const Text = styled.p`
     line-height: 22px;
     width: fit-content;
     @media all and (min-width: 640px){
-        font-size: 20px;
+        font-size: 18px;
         line-height: 30px;
     }
     @media all and (min-width: 1100px){
@@ -207,7 +208,7 @@ const Result = (props) => {
                     <Hr/>
                     <BtnWrapper>
                         { +project.id===projects.length ? <div style={{width: 'fit-content'}}>
-                                <NextButtonInvite />
+                                <NextButtonInvite onClick={setNext} />
                                 <InviteText>в «Северсталь-инфоком»!</InviteText>
                             </div>
                             : <NextButtonRed onClick={setNext}/>}
@@ -219,7 +220,7 @@ const Result = (props) => {
                 <Hr/>
                 <BtnWrapper>
                     { +project.id===projects.length ?<InviteWrapper>
-                                <NextButtonInvite />
+                                <NextButtonInvite onClick={setNext}/>
                                 <InviteText>в «Северсталь-инфоком»!</InviteText>
                             </InviteWrapper>
                         : <NextButtonRed onClick={setNext}/>}

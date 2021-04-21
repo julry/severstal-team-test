@@ -1,6 +1,5 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import styled from 'styled-components';
-import {jackyChanov} from "../constants/images";
 import {Text} from "./shared/Text";
 import {ArrowLeft} from "./shared/svgIcons/ArrowLeft";
 import {RefuseBtn} from "./shared/RefuseBtn";
@@ -26,7 +25,7 @@ const Wrapper = styled.div`
     
     @media all and (min-width: 640px) {
         padding: 30px 50px 0;
-        grid-template-rows: 9vh 33.15vh 24.5em auto;
+        grid-template-rows: 9vh 32.15vh 24.5em auto;
     }
     
     @media screen and (min-width: 1100px){
@@ -64,6 +63,7 @@ const TextWrapper = styled.div`
     }
     
     @media screen and (min-width: 1100px){
+        padding-top: 0;
         grid-column: 1/2;
         grid-row: 2 / 3;
     }
@@ -127,6 +127,10 @@ const BtnWrapper = styled.div`
     display: flex;
     grid-row: 4/5;
     justify-content: center;
+    & button{   
+        cursor: pointer;
+    }
+
     @media all and (min-width: 640px){
        justify-content: left;
        margin-left: -20px;
@@ -140,6 +144,8 @@ const BtnWrapper = styled.div`
 
     @media all and (min-width: 1100px){
         margin: 0;
+        padding: 0;
+        max-height: none;
         justify-content: center;
         grid-row: 3/4;
         grid-column: 2/3;
@@ -174,6 +180,7 @@ const FinishBtn = styled.button`
     background: #fff;
     margin-top: 10px;
     grid-row: 5/6;
+    cursor: pointer;
 
     @media all and (min-width: 640px){
         max-width: 280px;
@@ -189,6 +196,7 @@ const FinishBtn = styled.button`
     @media all and (min-width: 1100px){
         max-width: 350px;
         grid-column: 1/2;
+        margin: 0;
         padding: 23px 18px;
         grid-row: 3/4;
         font-size: 24px;
@@ -196,18 +204,29 @@ const FinishBtn = styled.button`
         max-height: 71px;
     }
 `
+const Dummy = styled.div`
+          width: 46px;
+          height: 40px;
+`
 
 const TeammateScreenWrapper = (props) => {
     const { projectId, teammate, isLast } = props;
 
-    const { setNext, setAnswer, setPrev, countPoints } = useContext(ProgressContext);
+    const { setNext, setAnswer, setPrev, countPoints, answers,refused} = useContext(ProgressContext);
+
+    const [isPressedChoose, setIsPressedChoose] = useState(answers[projectId] ? answers[projectId].includes(teammate.id) : false);
+    const [isPressedRefuse, setIsPressedRefuse] = useState( refused[projectId] ? refused[projectId].includes(teammate.id) : false);
 
     const onRefuse = () => {
         setAnswer(projectId, teammate.id, 'refuse');
+        setIsPressedRefuse(true);
+        setIsPressedChoose(false);
     }
 
     const onChoose = () => {
         setAnswer(projectId, teammate.id, 'choose');
+        setIsPressedRefuse(false);
+        setIsPressedChoose(true);
     }
 
     const onFinish = () => {
@@ -234,11 +253,13 @@ const TeammateScreenWrapper = (props) => {
             <Button onClick={setPrev}>
                 <ArrowLeft />
             </Button>
-            <Refuse onClick={onRefuse}/>
-            <ChooseBtn onClick={onChoose}/>
-            <Button onClick={setNext}>
-                <ArrowRight />
+            <Refuse onClick={onRefuse} style={isPressedRefuse ? {backgroundColor: '#a30000'} : {}}/>
+            <ChooseBtn onClick={onChoose} style={isPressedChoose ? {backgroundColor: '#008755'} : {}}/>
+            {!isLast ? <Button onClick={setNext}>
+                <ArrowRight/>
             </Button>
+                : <Button />
+            }
         </BtnWrapper>
         {isLast&&<FinishBtn onClick={onFinish}>Сформировать команду</FinishBtn>}
 
