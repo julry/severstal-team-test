@@ -20,7 +20,7 @@ const Title = styled.p`
     font-size: 18px;
     line-height: 22px;
     text-transform: uppercase;
-    margin: 2.3vh 62px 0;
+    margin: 2.3vh 27px 0;
     @media all and (min-width: 640px){
         font-size: 36px;
         line-height: 45px;

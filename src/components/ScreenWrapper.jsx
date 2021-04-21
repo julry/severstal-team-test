@@ -63,7 +63,6 @@ export function ScreenWrapper() {
             answers[projectId].map(mateId=> {
                 if (getTeammate(mateId, projectId).isCorrect) {
                     result += pointPerCorrect;
-                    console.log(mateId);
                 }
                 else {
                     result -= 10;

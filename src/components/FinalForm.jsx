@@ -107,9 +107,15 @@ const CheckboxesWrapper = styled.div`
 `
 const Label = styled.label`
     max-width:400px;
+    white-space: pre-wrap;
     @media screen and (min-width: 1100px){
         font-size: 24px;
       }
+`
+
+const SpanText = styled.span`
+    font-size: 14px;
+    font-style: italic;
 `
 const Required = styled.span`
     color: #ff0000;
@@ -179,6 +185,7 @@ const SubmitBtn = styled.div`
     display: flex;
     justify-content: flex-end;
 `
+
 const TopImgStyled = styled(TopImg)`
   @media screen and (min-width: 1100px){
         position: fixed;
@@ -272,6 +279,7 @@ const FinalForm = () => {
     const otherInput = useRef(null);
 
     const onProgramChoose = (e) => {
+        if (programs.length > 2 && !programs.includes(e.target.value)) return;
         if (e.target.checked){
             setPrograms(programs=> [...programs, e.target.value ]);
         }
@@ -371,12 +379,13 @@ const FinalForm = () => {
                 <Label>Год окончания <Required>*</Required></Label>
                 <Input type="text" placeholder="Год окончания" name="year" value={year} onChange={(e) => onYearChange(e.target.value)} required />
 
-                <Label>Какая программа стажировки тебя заинтересовала? Ты можешь добавить свой вариант в поле «другое». <Required>*</Required></Label>
+                <Label>Какая программа стажировки тебя заинтересовала? Ты можешь добавить свой вариант в поле «другое». <Required>*</Required> <SpanText>{"\n Не более трех вариантов."}</SpanText></Label>
                 <CheckboxesWrapper>
                     <ContainerLabel className="container">
                         <input
                             type="checkbox"
                             value={'консультант sap'}
+                            checked={programs.includes('консультант sap')}
                             onChange={(e) => onProgramChoose(e)}
                         />
                         <Checkmark/>
@@ -386,9 +395,10 @@ const FinalForm = () => {
                     </ContainerLabel>
                     <ContainerLabel className="container">
                         <input
-                        type="checkbox"
-                        value={'консультант 1С'}
-                        onChange={(e) => onProgramChoose(e)}
+                            checked={programs.includes('консультант 1С')}
+                            type="checkbox"
+                            value={'консультант 1С'}
+                            onChange={(e) => onProgramChoose(e)}
                         />
 
                         <Checkmark/>
@@ -398,6 +408,7 @@ const FinalForm = () => {
                     </ContainerLabel>
                     <ContainerLabel className="container">
                         <input
+                            checked={programs.includes('бизнес-анатилик')}
                             type="checkbox"
                             value={'бизнес-анатилик'}
                             onChange={(e) => onProgramChoose(e)}
@@ -409,6 +420,7 @@ const FinalForm = () => {
                     </ContainerLabel>
                     <ContainerLabel className="container">
                         <input
+                            checked={programs.includes('Java developer (бэкенд)')}
                             type="checkbox"
                             value={'Java developer (бэкенд)'}
                             onChange={(e) => onProgramChoose(e)}
@@ -420,6 +432,7 @@ const FinalForm = () => {
                     </ContainerLabel>
                     <ContainerLabel className="container">
                         <input
+                            checked={programs.includes('JavaScript developer (фронтэнд')}
                             type="checkbox"
                             value={'JavaScript developer (фронтэнд'}
                             onChange={(e) => onProgramChoose(e)}
@@ -431,9 +444,10 @@ const FinalForm = () => {
                     </ContainerLabel>
                     <ContainerLabel className="container">
                         <input
-                        type="checkbox"
-                        value={'SAP UI5 developer'}
-                        onChange={(e) => onProgramChoose(e)}
+                            checked={programs.includes('SAP UI5 developer')}
+                            type="checkbox"
+                            value={'SAP UI5 developer'}
+                            onChange={(e) => onProgramChoose(e)}
                         />
                         <Checkmark/>
                         <TextWrapperStyled>
@@ -443,9 +457,11 @@ const FinalForm = () => {
 
                     <ContainerLabel className="container">
                         <input
-                        type="checkbox"
-                        value={'ABAP developer'}
-                        onChange={(e) => onProgramChoose(e)}
+                            checked={programs.includes('ABAP developer')}
+
+                            type="checkbox"
+                            value={'ABAP developer'}
+                            onChange={(e) => onProgramChoose(e)}
                         />
                         <Checkmark/>
                         <TextWrapperStyled>
@@ -454,9 +470,10 @@ const FinalForm = () => {
                     </ContainerLabel>
                     <ContainerLabel className="container">
                         <input
-                        type="checkbox"
-                        value={'DevOps инженер'}
-                        onChange={(e) => onProgramChoose(e)}
+                            checked={programs.includes('DevOps инженер')}
+                            type="checkbox"
+                            value={'DevOps инженер'}
+                            onChange={(e) => onProgramChoose(e)}
                         />
                         <Checkmark/>
                         <TextWrapperStyled>
@@ -465,9 +482,10 @@ const FinalForm = () => {
                     </ContainerLabel>
                     <ContainerLabel className="container">
                         <input
-                        type="checkbox"
-                        value={'other'}
-                        onChange={(e) => onProgramChoose(e)}
+                            checked={programs.includes('other')}
+                            type="checkbox"
+                            value={'other'}
+                            onChange={(e) => onProgramChoose(e)}
                         />
                         <Checkmark/>
                         <TextWrapperStyled>
