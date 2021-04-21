@@ -343,7 +343,7 @@ const TeammateScreenWrapper = (props) => {
         setIsPressedRefuse(true);
         setIsPressedChoose(false);
 
-        if (!isLast)  setTimeout(setNext, 1500)
+        if (!isLast)  setTimeout(setNext, 500)
     }
 
     const onChoose = () => {
@@ -353,7 +353,7 @@ const TeammateScreenWrapper = (props) => {
         const pers = [...possiblePersons];
         pers.pop();
         setPossiblePersons(pers);
-        if (!isLast)  setTimeout(setNext, 1500)
+        if (!isLast)  setTimeout(setNext, 500)
     }
 
     const onFinish = () => {
