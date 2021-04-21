@@ -8,6 +8,10 @@ import {circleProjectTop, circleTopDesktop} from "../../constants/images";
     right:0;
     width: 65.333vw;
     max-width: 245px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     @media screen and (max-width: 340px){
         width: 61vw;
     }
