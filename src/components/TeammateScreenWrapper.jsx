@@ -7,6 +7,8 @@ import {ChooseBtn} from "./shared/ChooseBtn";
 import {ArrowRight} from "./shared/svgIcons/ArrowRight";
 import {ProgressContext} from "../context/ProgressContext";
 import {TopImg} from "./shared/TopImg";
+import {ChooseIcon} from "./shared/svgIcons/ChooseIcon";
+import {RefuseIcon} from "./shared/svgIcons/RefuseIcon";
 
 const Wrapper = styled.div`
     padding: 3.3vh 27px 0;
@@ -74,6 +76,7 @@ const TextWrapper = styled.div`
 const ImgWrapper = styled.div`
     grid-row: 2 / 3;
     margin-bottom: 10px;
+    position: relative;
     & img {
       max-height: 100%;
       max-width: 100%;
@@ -94,6 +97,47 @@ const ImgWrapper = styled.div`
     }
     
    
+`
+
+const Chosen = styled(ChooseIcon)`
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 22vh;
+    
+    
+    @media all and (min-width: 640px){
+       left: 30vh;
+    }
+    
+    @media all and (min-width: 1000px){
+        width: 60px;
+        height: 60px;
+        left: auto;
+        bottom: 30px;
+        right: 20px;
+    }
+`
+const Refused = styled(RefuseIcon)`
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 22vh;
+    
+    
+    @media all and (min-width: 640px){
+       left: 30vh;
+    }
+    
+    @media all and (min-width: 1000px){
+        width: 60px;
+        height: 60px;
+        left: auto;
+        bottom: 25px;
+        right: 20px;
+    }
 `
 const Position = styled.p`
     font-size: 16px;
@@ -240,6 +284,8 @@ const TeammateScreenWrapper = (props) => {
             {"кого необходимо\nвзять в команду?"}
         </Title>
         <ImgWrapper>
+            {isPressedRefuse&&<Refused fill={'red'} />}
+            {isPressedChoose&&<Chosen fill={'#00b674'}/>}
             <img src={teammate.image} alt={''} />
         </ImgWrapper>
         <TextWrapper>
@@ -253,7 +299,7 @@ const TeammateScreenWrapper = (props) => {
             <Button onClick={setPrev}>
                 <ArrowLeft />
             </Button>
-            <Refuse onClick={onRefuse} style={isPressedRefuse ? {backgroundColor: '#a30000'} : {}}/>
+            <Refuse onClick={onRefuse} style={isPressedRefuse ? {backgroundColor: '#a30000'} : {}} />
             <ChooseBtn onClick={onChoose} style={isPressedChoose ? {backgroundColor: '#008755'} : {}}/>
             {!isLast ? <Button onClick={setNext}>
                 <ArrowRight/>
