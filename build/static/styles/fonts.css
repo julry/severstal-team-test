@@ -1,0 +1,32 @@
+
+@font-face {
+    font-family: 'Grtsk Peta';
+    src: local('Grtsk Peta Regular'), local('GrtskPeta-Regular'),
+    url('../fonts/GrtskPeta-Regular/GrtskPeta-Regular.woff2') format('woff2'),
+    url('../fonts/GrtskPeta-Regular/GrtskPeta-Regular.woff') format('woff'),
+    url('../fonts/GrtskPeta-Regular/GrtskPeta-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Grtsk Peta';
+    src: local('Grtsk Peta Medium'), local('GrtskPeta-Medium'),
+    url('../fonts/GrtskPeta-Medium/GrtskPeta-Medium.woff2') format('woff2'),
+    url('../fonts/GrtskPeta-Medium/GrtskPeta-Medium.woff') format('woff'),
+    url('../fonts/GrtskPeta-Medium/GrtskPeta-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Grtsk Peta';
+    src: local('Grtsk Peta Semibold'), local('GrtskPeta-Semibold'),
+    url('../fonts/GrtskPeta-Semibold/GrtskPeta-Semibold.woff2') format('woff2'),
+    url('../fonts/GrtskPeta-Semibold/GrtskPeta-Semibold.woff') format('woff'),
+    url('../fonts/GrtskPeta-Semibold/GrtskPeta-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}

@@ -1,10 +1,9 @@
-import React, {useContext, useRef, useState} from "react";
+import React, { useRef, useState} from "react";
 import styled from  'styled-components';
 import {Text} from "./shared/Text";
 import {TopImg} from "./shared/TopImg";
 import {Button} from "./shared/Button";
 import {circleBgBtm} from "../constants/images";
-import {ProgressContext} from "../context/ProgressContext";
 
 
 const Wrapper = styled.div`
