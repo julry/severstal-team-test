@@ -23,11 +23,13 @@ export const Text = styled.p`
     
     @media all and (min-height: 640px) and (orientation: landscape){
           font-size: 18px;
+          line-height: 22px;
+
     }
     
     @media screen and (min-width: 1100px){
-        font-size: 24px;
-        line-height: 30px;
+          font-size: 20px;
+          line-height: 25px;
     }
     
 `
