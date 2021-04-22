@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import {Logo} from "./shared/svgIcons/Logo";
 import styled from 'styled-components';
 import {circleBgBtm, circleBgTop} from "../constants/images";
@@ -110,15 +110,21 @@ const IntroWrapper = (props) => {
     const [marginTop, setMarginTop] = useState(-248);
 
 
-    useEffect(()=>{
-        window.scroll(0, 0);
+    const updatePosition = () =>{
         if (window.innerWidth > 1100 && window.innerHeight > 750 ) return;
         let height = window.innerHeight - buttonRef.current.getBoundingClientRect().top - 53;
         height = height > 110 ? height : 110;
         setHeight(height);
         setMarginTop(height - 358);
-    }, [])
+    };
 
+
+    useEffect(()=>{
+        window.scroll(0, 0);
+        window.addEventListener('resize', updatePosition);
+        updatePosition();
+        return () => window.removeEventListener('resize', updatePosition);
+    }, [])
 
     return <IntroWrapperStyled>
         <LogoSeverstal />
