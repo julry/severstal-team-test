@@ -351,7 +351,7 @@ const TeammateScreenWrapper = (props) => {
         setIsPressedRefuse(false);
         setIsPressedChoose(true);
         const pers = [...possiblePersons];
-        pers.pop();
+        if (!isPressedChoose) pers.pop();
         setPossiblePersons(pers);
         if (!isLast)  setTimeout(setNext, 1500)
     }
@@ -383,7 +383,7 @@ const TeammateScreenWrapper = (props) => {
 
         <ImgWrapper>
             {isPressedRefuse&&<Refused fill={'red'} />}
-            {isPressedChoose&&<Chosen fill={'#00b674'}/>}
+            {isPressedChoose&&<Chosen fill={'#33927B'}/>}
             <img src={teammate.image} alt={''} />
         </ImgWrapper>
         <TextWrapper>
@@ -398,7 +398,7 @@ const TeammateScreenWrapper = (props) => {
                 <ArrowLeft />
             </Button>
             <Refuse onClick={onRefuse} style={isPressedRefuse ? {backgroundColor: '#a30000'} : {}} />
-            <ChooseBtn onClick={onChoose} style={isPressedChoose ? {backgroundColor: '#008755'} : {}}/>
+            <ChooseBtn onClick={onChoose} style={isPressedChoose ? {backgroundColor: '#00635B'} : {}}/>
             {!isLast ? <Button onClick={setNext}>
                 <ArrowRight/>
             </Button>
