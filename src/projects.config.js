@@ -1,10 +1,22 @@
 import {
-    alexEinstein, dmitriiFilin, eva,
-    grishaPotter, illyaVoroshenec,
+    alexEinstein,
+    dmitriiFilin,
+    eva,
+    grishaPotter,
+    illyaVoroshenec,
     ivanNedobriy,
     jackyChanov,
-    jamesGoslingov, leonardoDaVinchin, michaelLomouhov, nicolaiTesla, ninjaTurtles, pavelUmnov, rajaBharatiya, steelMan,
-    steveWorks, superWoman,
+    jamesGoslingov,
+    javonius,
+    leonardoDaVinchin,
+    michaelLomouhov, nazimirKalevich,
+    nicolaiTesla,
+    ninjaTurtles,
+    pavelUmnov,
+    rajaBharatiya,
+    steelMan,
+    steveWorks,
+    superWoman,
     vinBenzin
 } from "./constants/images";
 
@@ -194,7 +206,7 @@ export const projects = [{
                 position: 'UI - дизайнер',
                 description: 'Настоящий профессионал дизайнерского мастерства. Своими работами поднимает целые волны обсуждений в социальных сетях. Один из его интерфейсов оказался настолько необычным, что его продали за 100 миллионов денег одной компании.',
                 isCorrect: true,
-                image: rajaBharatiya,
+                image: nazimirKalevich,
             },
             {
                 id: '3',
@@ -202,7 +214,7 @@ export const projects = [{
                 position: 'Java-разработчик',
                 description: 'Древний и могучий бог программирования. В "Священном уставе программиста" прописано, что именно он явился во сне к разработчику языка Java. Именно он считает все пропущенные фигурные скобки в коде и решает, куда отправить программиста - в ад или в «Северсталь» .',
                 isCorrect: true,
-                image: dmitriiFilin,
+                image: javonius,
             },
             {
                 id: '4',

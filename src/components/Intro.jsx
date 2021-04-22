@@ -64,7 +64,7 @@ const TextTitle = styled.p`
     max-width: 887px;
 
     @media screen and (min-width: 1100px){
-        font-size: 24px;
+        font-size: 20px;
     }
 `
 
@@ -94,7 +94,8 @@ const BtnWrapper = styled.div`
 
 const BtnImgWrapper = styled.div`
   margin-left: -25px;
-  @media screen and (min-width: 1100px){
+  @media screen and (min-width: 1100px) and (min-height: 750px){
+      margin-left: 0;
       position: fixed;
       bottom: 0;
       left: 0;
@@ -108,9 +109,10 @@ const IntroWrapper = (props) => {
     const [height, setHeight] = useState(110);
     const [marginTop, setMarginTop] = useState(-248);
 
+
     useEffect(()=>{
         window.scroll(0, 0);
-        if (window.innerWidth > 1100 ) return;
+        if (window.innerWidth > 1100 && window.innerHeight > 750 ) return;
         let height = window.innerHeight - buttonRef.current.getBoundingClientRect().top - 53;
         height = height > 110 ? height : 110;
         setHeight(height);
