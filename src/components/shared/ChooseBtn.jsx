@@ -4,9 +4,9 @@ import {ChooseIcon} from "./svgIcons/ChooseIcon";
 import {AnswerBtn} from "./AnswerBtn";
 
 const Button = styled(AnswerBtn)`
-  background-color: #00b674;
+  background-color:  #33927B;
     &:hover{
-      background-color: #019a62;
+      background-color: #00635B;
     }
 `
 
