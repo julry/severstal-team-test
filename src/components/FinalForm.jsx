@@ -283,7 +283,7 @@ const FinalForm = () => {
     }
 
     useEffect(()=> {
-        console.log(sbjs);
+        console.log(sbjs.get.current.src);
         console.log(sbjs.get.current.mdm);
         console.log(sbjs.get.current.cmp);
         console.log(sbjs.get.current.cnt);
@@ -310,10 +310,10 @@ const FinalForm = () => {
         formData.append(GOOGLE_FORM_YEAR_ID, year);
         formData.append(GOOGLE_FORM_PHONE_ID, phone);
         formData.append(GOOGLE_FORM_EMAIL_ID, email);
-        // formData.append(GOOGLE_FORM_UTM_SOURCE, );
-        // formData.append(GOOGLE_FORM_UTM_MEDIUM, );
-        // formData.append(GOOGLE_FORM_UTM_CAMPAIGN, );
-        // formData.append(GOOGLE_FORM_UTM_CONTENT, );
+        formData.append(GOOGLE_FORM_UTM_SOURCE, sbjs.get.current.src);
+        formData.append(GOOGLE_FORM_UTM_MEDIUM, sbjs.get.current.mdm);
+        formData.append(GOOGLE_FORM_UTM_CAMPAIGN, sbjs.get.current.cmp);
+        formData.append(GOOGLE_FORM_UTM_CONTENT, sbjs.get.current.cnt);
 
         for (let i = 0; i < programs.length; i++){
             if (programs[i] === 'other' && otherProgram!=='') {
