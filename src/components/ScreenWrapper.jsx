@@ -4,6 +4,7 @@ import {preloadImage} from "../utils/preloadImage";
 import { ProgressProvider } from '../context/ProgressContext';
 import {projects} from "../projects.config";
 import {getTeammate} from "../utils/getTeammate";
+import sbjs from 'sourcebuster';
 
 export function ScreenWrapper() {
     /////////////////// for development ////////////////////////////////////
@@ -81,6 +82,12 @@ export function ScreenWrapper() {
         const clears = preloadImages && preloadImages.map(img => preloadImage(img));
         return () => clears && clears.forEach(clear => clear());
     }, [preloadImages]);
+
+    function go(sb) {
+        console.log('Cookies are set! Your current source is: ' + sb.current.src);
+    }
+
+    useEffect(()=> sbjs.init({domain: {host: 'julry.github.io', isolate: true}, callback: go}), []);
 
     const progressProviderValue = {
         screen,
