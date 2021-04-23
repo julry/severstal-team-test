@@ -282,12 +282,6 @@ const FinalForm = () => {
        setYear(value);
     }
 
-    useEffect(()=> {
-        console.log(sbjs.get.current.src);
-        console.log(sbjs.get.current.mdm);
-        console.log(sbjs.get.current.cmp);
-        console.log(sbjs.get.current.cnt);
-    }, []);
     const otherInput = useRef(null);
 
     const onProgramChoose = (e) => {

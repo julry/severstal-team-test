@@ -7,12 +7,8 @@ import {getTeammate} from "../utils/getTeammate";
 import sbjs from 'sourcebuster';
 
 export function ScreenWrapper() {
-    /////////////////// for development ////////////////////////////////////
-    const urlParams = new URLSearchParams(window.location.search);
-    const screenParam = urlParams.get('screen');
-    ////////////////////////////////////////////////////////////////////////
 
-    const [currentScreenIndex, setCurrentScreenIndex] = useState(+screenParam || 0);
+    const [currentScreenIndex, setCurrentScreenIndex] = useState( 0);
     const [screenDelta, setScreenDelta] = useState(0);
     const [answers, setAnswers] = useState([]);
     const [finalPoints, setFinalPoints] = useState({});
@@ -87,7 +83,7 @@ export function ScreenWrapper() {
         console.log('Cookies are set! Your current source is: ' + sb.current.src);
     }
 
-    useEffect(()=> sbjs.init({domain: {host: 'julry.github.io', isolate: true}, callback: go}), []);
+    useEffect(()=> sbjs.init({domain: {host: 'itstal.fut.ru', isolate: true}, callback: go}), []);
 
     const progressProviderValue = {
         screen,
