@@ -7,6 +7,7 @@ import {NextButtonRed} from "./shared/NextButtonRed";
 import {ProgressContext} from "../context/ProgressContext";
 import {projects} from "../projects.config";
 import {NextButtonInvite} from "./shared/NextButtonInvite";
+import {reachMetrikaGoal} from "../utils/reachMetrikaGoal";
 
 const Wrapper = styled.div`
     white-space: pre-wrap;
@@ -184,10 +185,16 @@ const InviteText = styled(Text)`
     }
 `
 
+
 const Result = (props) => {
     const {project} = props;
     const { setNext, finalPoints } = useContext(ProgressContext);
     const points = finalPoints[project.id];
+
+    const onInvite = () => {
+        reachMetrikaGoal('form');
+        setNext();
+    }
 
     const {text, title} = points === 100 ? project.result.success : project.result.fail;
     return <Wrapper>
@@ -210,7 +217,7 @@ const Result = (props) => {
                     <Hr/>
                     <BtnWrapper>
                         { +project.id===projects.length ? <div style={{width: 'fit-content'}}>
-                                <NextButtonInvite onClick={setNext} />
+                                <NextButtonInvite onClick={onInvite} />
                                 <InviteText>в «Северсталь-инфоком»!</InviteText>
                             </div>
                             : <NextButtonRed onClick={setNext}/>}
@@ -223,7 +230,7 @@ const Result = (props) => {
             <Hr/>
             <BtnWrapper>
                 { +project.id===projects.length ?<InviteWrapper>
-                        <NextButtonInvite onClick={setNext}/>
+                        <NextButtonInvite onClick={onInvite}/>
                         <InviteText>в «Северсталь-инфоком»!</InviteText>
                     </InviteWrapper>
                     : <NextButtonRed onClick={setNext}/>}

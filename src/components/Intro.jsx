@@ -5,6 +5,7 @@ import {circleBgBtm, circleBgTop} from "../constants/images";
 import {NextButtonRed} from "./shared/NextButtonRed";
 import {ProgressContext} from '../context/ProgressContext';
 import {TopImg} from "./shared/TopImg";
+import {reachMetrikaGoal} from "../utils/reachMetrikaGoal";
 
 const IntroWrapperStyled = styled.div`
     padding: 3vh 25px 0;
@@ -126,6 +127,11 @@ const IntroWrapper = (props) => {
         return () => window.removeEventListener('resize', updatePosition);
     }, [])
 
+    const onStartTest = () => {
+        if (screen.id === "1") reachMetrikaGoal('start');
+        setNext();
+    }
+
     return <IntroWrapperStyled>
         <LogoSeverstal />
         <TopImg src={circleBgTop} alt={''} />
@@ -139,7 +145,7 @@ const IntroWrapper = (props) => {
         </TextWrapper>
 
         <BtnWrapper ref={buttonRef}>
-            <NextButtonRed onClick={setNext} />
+            <NextButtonRed onClick={onStartTest} />
         </BtnWrapper>
         <BtnImgWrapper style={{height:height + 'px' }}>
             <BtmImg src={circleBgBtm} alt={''} style={{marginTop: marginTop}}/>

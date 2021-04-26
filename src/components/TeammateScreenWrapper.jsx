@@ -11,6 +11,7 @@ import {ChooseIcon} from "./shared/svgIcons/ChooseIcon";
 import {RefuseIcon} from "./shared/svgIcons/RefuseIcon";
 import {getTeammate} from "../utils/getTeammate";
 import {getProjectById} from "../utils/getProjectById";
+import {reachMetrikaGoal} from "../utils/reachMetrikaGoal";
 
 const Wrapper = styled.div`
     padding: 3.3vh 27px 3vh;
@@ -358,6 +359,7 @@ const TeammateScreenWrapper = (props) => {
 
     const onFinish = () => {
         countPoints(projectId);
+        reachMetrikaGoal('p'+projectId+'finish');
         setNext();
     }
 

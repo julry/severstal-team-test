@@ -4,6 +4,7 @@ import {NextButtonRed} from "./shared/NextButtonRed";
 import {ProgressContext} from "../context/ProgressContext";
 import {circleProjectBtm} from "../constants/images";
 import {Header} from "./shared/Header";
+import {reachMetrikaGoal} from "../utils/reachMetrikaGoal";
 
 const ProjectWrapper = styled.div`
      overflow: hidden;
@@ -67,6 +68,11 @@ const ProjectIntro = (props) => {
         window.scroll(0, 0);
     },[]);
 
+    const onProjectStart = () => {
+        if (project.id==='1') reachMetrikaGoal('p1start');
+        setNext();
+    }
+
     return <ProjectWrapper>
         <Header id={project.id} />
         <TextWrapper>
@@ -86,7 +92,7 @@ const ProjectIntro = (props) => {
                 :<>
                     <Hr/>
                     <BtnWrapper>
-                    <NextButtonRed onClick={setNext} />
+                    <NextButtonRed onClick={onProjectStart} />
                     </BtnWrapper>
                 </>}
         </TextWrapper>
